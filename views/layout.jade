@@ -1,0 +1,53 @@
+!!! 5
+html
+  head
+    title nodejs waf search
+    style
+      body{
+        background: #9f9f9f
+      }
+      .package{
+        background: #2f2f2f;
+        border-radius: 5px;
+        color: #dfdfdf;
+        display: inline-block;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 200;
+        letter-spacing: 1px;
+        margin: 10px 10px;
+        padding: 5px;
+        width: 200px;
+      }
+      input{
+        background: #fff;
+        border: 1px solid #111;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 5px 10px;
+        width: 200px;
+      }
+      .hide{display: none;}
+  body
+    input(type="text", id= "packageName", placeholder="enter package name")
+    #results
+      each val, key in packages
+        span.package= key
+    script
+      var packages = document.querySelectorAll('.package')
+      ,   packageName = document.getElementById('packageName')
+      ,   i = 0
+      ,   len = packages.length;
+
+      packageName.addEventListener('keyup', function(){
+        if(this.value === ''){
+          for(i=0; i<len; i++){
+            packages[i].className = 'package';
+          }
+          return;
+        }
+        for(i=0; i<len; i++){
+            (packages[i].innerHTML.indexOf(packageName.value) > -1)
+            ? packages[i].className = 'package'
+            : packages[i].className = 'package hide'
+        }
+      });

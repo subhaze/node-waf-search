@@ -1,0 +1,13 @@
+{
+  "name": "node-waf-search",
+  "description": "Simple search for packages still using node-waf build process",
+  "version": "0.0.1",
+  "author": "subhaze",
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "request": "*"
+  },
+  "main": "app",
+  "engines": { "node": "*" }
+}
