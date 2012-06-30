@@ -7,6 +7,9 @@
 <html>
     <title>node.js 0.8.0 outdated packages</title>
     <style>
+        body{
+            background: #9f9f9f;
+        }
         .package{
             background: #2f2f2f;
             border-radius: 5px;
@@ -20,7 +23,7 @@
             width: 200px;
         }
         input{
-            background: #eaeaea;
+            background: #fff;
             border: 1px solid #111;
             border-radius: 5px;
             margin: 10px;
