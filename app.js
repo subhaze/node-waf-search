@@ -12,12 +12,21 @@ app.set('view engine', 'jade');
 
 var request = require('request');
 var packages = {};
+
 request('http://registry.npmjs.org/-/scripts?scripts=install,preinstall,postinstall&match=\\bnode-waf\\b', function (error, response, body) {
 	if (!error && response.statusCode == 200) {
-		console.log(body);
 		packages = JSON.parse(body);
 	}
 });
+
+// update packages every hour...
+setInterval(function(){
+	request('http://registry.npmjs.org/-/scripts?scripts=install,preinstall,postinstall&match=\\bnode-waf\\b', function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			packages = JSON.parse(body);
+		}
+	});
+}, 1000*60*60);
 
 app.get('/', function(req, res){
 	res.render('layout', { packages: packages });
