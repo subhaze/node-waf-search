@@ -41,17 +41,17 @@
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed.js"></script>
         <script>
-            var moduleName = $('packageName')
-            ,   modules = $$('.package')
+            var packageName = $('packageName')
+            ,   packages = $$('.package')
             ,   results = $('results');
             
-            moduleName.addEvent('keyup', function(){
+            packageName.addEvent('keyup', function(){
                 if(this.get('value') === ''){
-                    modules.removeClass('hide');
+                    packages.removeClass('hide');
                     return;
                 }
-                modules.each(function(item){
-                    (item.innerHTML.indexOf(moduleName.value) > -1)
+                packages.each(function(item){
+                    (item.innerHTML.indexOf(packageName.value) > -1)
                     ? item.removeClass('hide')
                     : item.addClass('hide');
                 });
